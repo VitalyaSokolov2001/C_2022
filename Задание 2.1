@@ -4,17 +4,24 @@
 числа умноженного на 3 в файл «output»
 
 ****************************************************************************/
-#include<fstream>
-#include<iostream>
+#include <iostream>
+#include <fstream>
 using namespace std;
-int main()
-{
- ofstream fout("output.txt");
- int A, B;
- cin >> A >> B;
-    for (int i = A; i <= B ; i++)
-    {
- fout << i * 3 << endl;
-    }
- fout.close();
+
+int main() {
+    ofstream file ("Numbers");
+        int A,B;
+        cout << "Введите A" << '\n';
+        cin >> A;
+        cout << "A = " << A << '\n';
+        cout << "Введите B>A" << '\n';
+        cin >> B;
+        cout << "B = " << B << '\n';
+        for(int i=A;i<=B;i++){
+        int C=i*3;
+        file << C << "\n";
+        }
+        file.close();
+        cout << "Файл создан";
+return 0;
 }
