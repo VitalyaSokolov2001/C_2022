@@ -1,49 +1,36 @@
-/***************************************************************************************
-
-Напишите класс CreditCard.
-Его свойства: Number (int, номер из 4 цифр) и Balance (float, баланс карты).
-Методы:
-Put(V) и Take(V) - положить и снять деньги. И то и другое задается при создании объекта: 
-CreditCard firstCC(1234, 50) - карта с номером 1234 и балансом в 50 Р. 
-Продемонстрируйте обращение к методу по указателю ( -> ).
-
-****************************************************************************************/
 #include <iostream>
 using namespace std;
 
-class CreditCard{
-	public:
-	int number;
-	float balance;
-	CreditCard(int a, float b){
-		this->number = a;
-		this->balance = b;
-	}
-	void Put(float a){
-		this->balance = this->balance + a;
-	}
-	void take(float a){
-		this->balance = this->balance - a;
-	}
-		
+class SberBank{
+    public:
+    int number;
+    float balance;
+    SberBank(int a, float b);
+    float put(float V){
+    balance=balance+V;
+    return 0;
+    }
+    float take(float V){
+    balance=balance-V;
+    return 0;
+    }
+    
 };
-
-void Transfer(CreditCard *first, CreditCard *second, float V){
-	if(first == second) {
-		cout<<"Это одна и та же карта!"<<endl;
-		return;
-	}
-	else {
-	if(first->balance < V)
-		 cout<<"Не хватает баланса на карте"<<endl;
-	else first->balance = first->balance - V, second->balance = second->balance + V;
-	return;
-	}
+SberBank::SberBank(int a=1234, float b=50){
+    number=a;
+    balance=b;
 }
-int main() {
-	CreditCard Ivan(1, 9863);
-	CreditCard Dima(2, 9473);
-	Transfer(&Ivan, &Dima, 32);
-	cout<<Ivan.balance<<' '<<Dima.balance<<endl;
-	return 0;
+    
+int main(){
+    SberBank firstCard(1234, 50);
+
+    SberBank *ukasatel=&firstCard;
+    
+    ukasatel -> put(55);
+    cout << firstCard.balance << endl;
+    
+    ukasatel -> take(87);
+    cout << firstCard.balance << endl;
+    
+    return 0;
 }
