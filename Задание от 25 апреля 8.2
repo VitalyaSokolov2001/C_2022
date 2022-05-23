@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+class SberBank {
+    public:
+    int number;
+    float balance;
+    SberBank(int a,float b);
+};
+    
+SberBank::SberBank(int a,float b){
+    number = a;
+    balance = b;
+}
+
+float Transfer(SberBank C1, SberBank C2,float V){
+        if(C1.number==C2.number){cout << "Номера карт совпадают!!! \n";}
+        else if(C1.balance<V){cout << "Не хватает денег! \n";}
+        else{
+            float a = C1.balance - V;
+            float b = C2.balance + V;
+            cout << "Операция выполнена ;^) \n" << "Осталось на картах: 1) "<< 
+            a <<" , 2) " << b << endl;
+        }
+        return 0;
+    }
+    
+int main(){
+    SberBank Alpha(2345, 180);
+    SberBank Bravo(1732, 50);
+    SberBank Gamma(1732, 15);
+
+    Transfer(Bravo, Alpha, 60);  
+    Transfer(Bravo, Gamma, 10);  
+    Transfer(Bravo, Alpha, 30); 
+    return 0;
+}
