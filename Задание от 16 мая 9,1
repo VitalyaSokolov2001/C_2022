@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+class T{
+    public:
+    string TEXT;
+    T(string t){
+    TEXT = t;
+}
+T operator ++(){
+    for(int i = 0; i<6; i++){
+        TEXT[i] = TEXT[i] + 1;
+}
+return *this;
+}
+
+T operator --(){
+    for(int i = 0; i<6; i++){
+        TEXT[i] = TEXT[i] - 1;
+}
+return *this;
+}
+void txt() {
+cout << TEXT << endl;
+}
+};
+
+int main () {
+    T text("abc123");
+    text.txt();
+    ++text;
+    text.txt();
+    --text;
+    text.txt();
+    return 0;
+}
