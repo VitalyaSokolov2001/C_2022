@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+class CreditCard {
+    public:
+    int number;
+    int balance;
+    public:
+    CreditCard(int a, int b) {
+        number=a;
+        balance=b;
+}
+CreditCard operator+(CreditCard &C){
+    CreditCard card(*this);
+    card.balance = C.balance + balance;
+    C.balance=0;
+    return card;
+}
+};
+int main() {
+    CreditCard C1(7896, 200);
+    CreditCard C2(1252, 50);
+    C1 = C1 + C2;
+    cout << C1.balance << " : " << C2.balance << endl;
+    C2 = C2 + C1;
+    cout << C1.balance << " : " << C2.balance;
+    return 0;
+}
